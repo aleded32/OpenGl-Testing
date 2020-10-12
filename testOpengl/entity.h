@@ -1,3 +1,5 @@
+#include <iostream>
+#include <fstream>
 #include <glut.h>
 
 class entity
@@ -21,4 +23,17 @@ public:
 	~teapot();
 	void create();
 	
+};
+
+class Polygon : public entity
+{
+public:
+	Polygon(std::ifstream* vertexFile);
+	~Polygon();
+
+	std::ifstream* vertexFile;
+	float vertex[10];
+
+	void init();
+	void create();
 };
