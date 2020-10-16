@@ -1,8 +1,11 @@
 #include <fstream>
+#include <iostream>
+#include <vector>
 #include <glut.h>
 #include "init.h"
 #include "projection.h"
 #include "entity.h"
+
 
 
 void display();
@@ -18,8 +21,6 @@ int main(int argc, char **argv)
 	
 
 	init* intialise = new init(argc,argv,640,480);
-	
-	
 		
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
@@ -28,12 +29,12 @@ int main(int argc, char **argv)
 	
 	
 	return 0;
-	//delete intialise;
 };
 
 void display()
 {
-	teapot Teapot(0.5, 0.1);
+	
+	//teapot Teapot(0.5, 0.1);
 	std::ifstream vertexText;
 	Polygon* polygon = new Polygon(&vertexText);
 	
@@ -41,9 +42,7 @@ void display()
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	Teapot.create();
 	polygon->create();
-
 
 	delete polygon;
 	glutSwapBuffers();
@@ -57,16 +56,12 @@ void display()
 
 void reshape(int w, int h)
 {
-	
 	projection* projected = new projection;
-
 	projected->windowProjection(w,h);
-
 	delete projected;
 }
 
 void idle()
 {
- 
   glutPostRedisplay();
 }

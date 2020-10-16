@@ -3,15 +3,21 @@
 
 
 
-init::init(int argc, char **argv, int width, int height)
+init::init(int argc, char **argv, int _width, int _height)
 {
+	width = _width;
+	height = _height;
+
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowSize(400,400);
+	glutInitWindowSize(width,height);
 	glutCreateWindow("Test");
 	
 	
 
 	
 };
+
+
+
 

@@ -1,6 +1,8 @@
 #include "entity.h"
 
-entity::entity(){}
+entity::entity()
+{
+}
 
 entity::~entity(){}
 
@@ -26,6 +28,7 @@ void teapot::create()
 Polygon::Polygon(std::ifstream* _vertexFile)
 {
 	vertexFile = _vertexFile;
+	listName = glGenLists(1);
 }
 
 Polygon::~Polygon()
@@ -35,6 +38,8 @@ Polygon::~Polygon()
 
 void Polygon::init()
 {
+	
+
 	vertexFile->open("D:\\v.txt");
 	if(vertexFile->is_open())
 	{
@@ -58,13 +63,19 @@ void Polygon::init()
 
 void Polygon::create()
 {
+	
+	glNewList(listName, GL_COMPILE);
+		glBegin(GL_POLYGON);
+			glColor3f(0.5,0.1,0.2);
+				glVertex2f(vertex[0], vertex[1]);
+				glVertex2f(vertex[2], vertex[3]);
+				glVertex2f(vertex[4], vertex[5]);
+				glVertex2f(vertex[6], vertex[7]);
+				glVertex2f(vertex[8], vertex[9]);	
+		glEnd();
+	glEndList();
 
-	glBegin(GL_POLYGON);
-		glVertex2f(vertex[0], vertex[1]);
-		glVertex2f(vertex[2], vertex[3]);
-		glVertex2f(vertex[4], vertex[5]);
-		glVertex2f(vertex[6], vertex[7]);
-		glVertex2f(vertex[8], vertex[9]);
-	glEnd();
+	glCallList(listName);
 
 }
+

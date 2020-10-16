@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <fstream>
 #include <glut.h>
 
@@ -8,11 +9,13 @@ public:
 
 	double size;
 	float angle;
+	std::vector<int> index;
 
 	entity();
 	~entity();
 	void create();
-
+	void checkList();
+	GLuint listName;
 
 };
 
