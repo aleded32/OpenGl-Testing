@@ -1,7 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include <glut.h>
+#include <GL/glut.h>
 #include "init.h"
 #include "projection.h"
 #include "entity.h"
@@ -43,6 +43,7 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	polygon->create();
+	//Teapot.create();
 
 	delete polygon;
 	glutSwapBuffers();
@@ -64,4 +65,5 @@ void reshape(int w, int h)
 void idle()
 {
   glutPostRedisplay();
+  
 }

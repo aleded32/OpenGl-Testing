@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <glut.h>
+#include <GL/glut.h>
 
 class entity
 {

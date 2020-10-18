@@ -40,7 +40,7 @@ void Polygon::init()
 {
 	
 
-	vertexFile->open("D:\\v.txt");
+	vertexFile->open("v.txt");
 	if(vertexFile->is_open())
 	{
 		
