@@ -29,17 +29,6 @@ Polygon::Polygon(std::ifstream* _vertexFile)
 {
 	vertexFile = _vertexFile;
 	listName = glGenLists(1);
-}
-
-Polygon::~Polygon()
-{
-
-}
-
-void Polygon::init()
-{
-	
-
 	vertexFile->open("v.txt");
 	if(vertexFile->is_open())
 	{
@@ -57,8 +46,16 @@ void Polygon::init()
 	
 	vertexFile->close();
 	
-	
+}
 
+Polygon::~Polygon()
+{
+
+}
+
+float Polygon::setVertex(int index, int value)
+{
+	return vertex[index] = value;
 }
 
 void Polygon::create()
@@ -76,6 +73,14 @@ void Polygon::create()
 	glEndList();
 
 	glCallList(listName);
-
+	glDeleteLists(listName, 1);
 }
+
+float Polygon::getVertex(int index)
+{
+	return vertex[index];
+}
+
+
+
 

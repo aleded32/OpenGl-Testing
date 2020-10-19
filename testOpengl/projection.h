@@ -1,4 +1,6 @@
-#include <GL/glut.h>
+#pragma once
+
+#include <glut.h>
 
 class projection
 {

@@ -18,6 +18,16 @@ init::init(int argc, char **argv, int _width, int _height)
 	
 };
 
+int init::getWidth()
+{
+	return width;
+}
+
+int init::getHeight()
+{
+	return height;
+}
+
 
 
 

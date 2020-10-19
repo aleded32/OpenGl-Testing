@@ -1,7 +1,9 @@
+#pragma once
+
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <GL/glut.h>
+#include <glut.h>
 
 class entity
 {
@@ -14,7 +16,7 @@ public:
 	entity();
 	~entity();
 	void create();
-	void checkList();
+	void move();
 	GLuint listName;
 
 };
@@ -34,9 +36,14 @@ public:
 	Polygon(std::ifstream* vertexFile);
 	~Polygon();
 
+	void create();
+	float getVertex(int index);
+	float setVertex(int index, int value);
+	
+private:
+
 	std::ifstream* vertexFile;
+
 	float vertex[10];
 
-	void init();
-	void create();
 };
