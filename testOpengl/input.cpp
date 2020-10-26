@@ -25,19 +25,7 @@ void input::move(int x, int y, int button)
 	
 }
 
-int input::ScreenX(float vertex)
-{
-	int x = (Init->getWidth()/4) * (polygon->getVertex(vertex) + 2);
-	return x;
-}
 
-int input::ScreenY(float vertex)
-{
-
-	int y = (Init->getHeight()/4) * ((polygon->getVertex(vertex)*-1) + 2);	
-
-	return y;
-}
 
 float input::coordX(float x)
 {
@@ -57,20 +45,13 @@ float input::coordY(float y)
 void input::translateObject(int x, int y)
 {
 
-
-
 	
 	polygon->dx += (coordX(x) - coordX(lastMouseX));
 	polygon->dy += (coordY(y) - coordY(lastMouseY));
 
 
-
-	
-	
-
 	lastMouseX = x;
 	lastMouseY = y;
-	
 	
 
 }

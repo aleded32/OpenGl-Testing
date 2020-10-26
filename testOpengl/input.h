@@ -18,8 +18,6 @@ public:
 	void move(int x, int y, int button);
 	
 	int lastMouseX, lastMouseY;
-	int ScreenX(float vertex);
-	int ScreenY(float vertex);
 	float coordX(float x);
 	float coordY(float y);
 	void translateObject(int x, int y);

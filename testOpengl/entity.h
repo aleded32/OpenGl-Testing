@@ -1,6 +1,8 @@
 #pragma once
 
+#define _USE_MATH_DEFINES
 #include <iostream>
+#include <cmath>
 #include <vector>
 #include <fstream>
 #include <glut.h>
@@ -13,8 +15,8 @@ public:
 	float dx, dy;
 	float angle;
 	float scale;
-
-	std::vector<int> index;
+	float x, y;
+	
 
 	entity();
 	~entity();
@@ -32,7 +34,8 @@ public:
 	~Polygon();
 
 	void create();
-	void init(std::ifstream* vertexFile);
+	void init(std::ifstream* vertexFileRead);
+	void writeVertices(std::ofstream* vertexFileWrite);
 	float getVertex(int index);
 	float setVertex(int index, int value);
 	
@@ -40,7 +43,8 @@ public:
 
 private:
 
-	std::ifstream* vertexFile;
+	std::ifstream* vertexFileRead;
+	std::ofstream* vertexFileWrite;
 
 	float vertex[10];
 

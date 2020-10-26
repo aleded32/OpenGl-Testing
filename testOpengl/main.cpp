@@ -55,9 +55,10 @@ void display()
 {
 	
 	
-	std::ifstream vertexText;
-    
-	polygon->init(&vertexText);
+	std::ifstream vertexTextRead;
+    std::ofstream vertexTextWrite;
+	polygon->writeVertices(&vertexTextWrite);
+	polygon->init(&vertexTextRead);
 	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
