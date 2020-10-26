@@ -97,9 +97,13 @@ void Polygon::create()
 		glBegin(GL_POLYGON);
 			glColor3f(0.5,0.1,0.2);
 				glVertex2f(vertex[0], vertex[1]);
+			glColor3f(0.2,0.3,0.2);
 				glVertex2f(vertex[2], vertex[3]);
+			glColor3f(0,0.6,0.2);
 				glVertex2f(vertex[4], vertex[5]);
+			glColor3f(0.1,0.7,0.2);
 				glVertex2f(vertex[6], vertex[7]);
+			glColor3f(0.1,0.3,0.5);
 				glVertex2f(vertex[8], vertex[9]);	
 		glEnd();
 	glEndList();
