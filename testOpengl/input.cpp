@@ -1,16 +1,27 @@
 #include "input.h"
 
 
-void input::move(int x, int y, int state)
+void input::move(int x, int y, int button)
 {
-	if(state == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
-	{
-		if(x >= ScreenX(8) &&  x <= ScreenX(2) && y >= ScreenY(3) && y <= ScreenY(5))
-		{
-			std::cout << "pentagon" << std::endl;
-		}
+
+	
+	//translation
 		
-	}
+		if(button == GLUT_LEFT_BUTTON)
+		{
+			translateObject(x,y);
+			
+		}
+		if(button == GLUT_RIGHT_BUTTON)
+		{
+			rotateObject(x,y);
+		}
+		if(button == GLUT_MIDDLE_BUTTON)
+		{
+			scaleObject(x,y);
+		}
+
+	
 	
 }
 
@@ -31,21 +42,55 @@ int input::ScreenY(float vertex)
 float input::coordX(float x)
 {
 
-	float vertexX = x/(Init->getWidth()/4) - 2;
+	float vertexX = x/(601/4) - 2;
 
 	return vertexX;
 }
 
 float input::coordY(float y)
 {
-	float vertexY = (y/(Init->getWidth()/4)*-1) - 2;
+	float vertexY = (y/(601/4)*-1) - 2;
 
 	return vertexY;
+}
+
+void input::translateObject(int x, int y)
+{
+
+
+
+	
+	polygon->dx += (coordX(x) - coordX(lastMouseX));
+	polygon->dy += (coordY(y) - coordY(lastMouseY));
+
+
+
+	
+	
+
+	lastMouseX = x;
+	lastMouseY = y;
+	
+	
+
+}
+
+void input::rotateObject(int x, int y)
+{
+	polygon->angle -= (coordY(lastMouseY) - coordY(y));
+}
+
+void input::scaleObject(int x, int y)
+{
+	polygon->scale -= (coordY(lastMouseY) - coordY(y))* 0.05;
 }
 
 
 input::input(init* _Init, Polygon* _polygon)
 {
+
+	
+
 	Init = _Init;
 	polygon = _polygon;
 }

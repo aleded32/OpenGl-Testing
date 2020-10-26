@@ -7,26 +7,19 @@ entity::entity()
 entity::~entity(){}
 
 
-teapot::teapot(double size, float angle)
+Polygon::Polygon()
 {
-	this->size = size;
-	this->angle = angle;
-}
-
-teapot::~teapot()
-{
-
-}
-
-void teapot::create()
-{
+	dx = 0.0;
+	dy = 0.0;
+	angle = 0.0;
+	scale = 1.0;
 	
-	glRotatef(angle, 1,0,0);
-	glutWireTeapot(size);
 }
 
-Polygon::Polygon(std::ifstream* _vertexFile)
+void Polygon::init(std::ifstream* _vertexFile)
 {
+
+
 	vertexFile = _vertexFile;
 	listName = glGenLists(1);
 	vertexFile->open("v.txt");
@@ -55,7 +48,7 @@ Polygon::~Polygon()
 
 float Polygon::setVertex(int index, int value)
 {
-	return vertex[index] = value;
+	return vertex[index] += value;
 }
 
 void Polygon::create()
@@ -80,6 +73,8 @@ float Polygon::getVertex(int index)
 {
 	return vertex[index];
 }
+
+
 
 
 

@@ -12,10 +12,15 @@
 void display();
 void reshape(int w, int h);
 void idle();
-void inputs(int button, int state, int x, int y);
+void inputMouse(int x, int y);
+void inputKey(int button,int state, int x, int y);
 init* intialise;
+Polygon* polygon = new Polygon;
+input* Input = new input(intialise, polygon);
 
 
+int _button;
+float dx = 0.0, dy = 0.0;
 
 	
 
@@ -31,11 +36,17 @@ int main(int argc, char **argv)
 	
 	glutReshapeFunc(reshape);
 	glutIdleFunc(idle);
+	glutMouseFunc(inputKey);
+	glutMotionFunc(inputMouse);
+
+	
 	
 	glutMainLoop();
 	
 	
-	
+	delete polygon;
+	delete intialise;
+	delete Input;
 	return 0;
 	
 };
@@ -43,21 +54,25 @@ int main(int argc, char **argv)
 void display()
 {
 	
-	//teapot Teapot(0.5, 0.1);
 	
 	std::ifstream vertexText;
-    Polygon* polygon = new Polygon(&vertexText);
+    
+	polygon->init(&vertexText);
 	
-
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	glPushMatrix();
+	
+	glTranslatef(polygon->dx, polygon->dy, 0);
+	glRotatef(polygon->angle, 0,0,1);
+	glScalef(polygon->scale,polygon->scale, 0);
 	polygon->create();
-	//Teapot.create();
-	
-	
+
+	glPopMatrix();
 	glutSwapBuffers();
-	glutMouseFunc(inputs);
-	delete polygon;
+	
+	
+	
 	glFlush();
 
 	
@@ -79,16 +94,25 @@ void idle()
   
 }
 
-void inputs(int button, int state, int x, int y)
+void inputMouse(int x, int y)
 {
 
-	std::ifstream vertexText;
-    Polygon* polygon = new Polygon(&vertexText);
 	
-	input* Input = new input(intialise, polygon);
-	Input->move(x, y, state);
+	
+	
+	Input->move(x, y, _button);
 	//std::cout << polygon->getVertex(0) << std::endl;
-	delete Input;
-	delete polygon;
+	
+	
 }
+
+void inputKey(int button, int state, int x, int y)
+{
+	_button = button;
+	Input->lastMouseX = x;
+	Input->lastMouseY = y;
+
+}
+
+
 

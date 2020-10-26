@@ -10,7 +10,10 @@ class entity
 public:
 
 	double size;
+	float dx, dy;
 	float angle;
+	float scale;
+
 	std::vector<int> index;
 
 	entity();
@@ -21,25 +24,20 @@ public:
 
 };
 
-class teapot : public entity
-{
-public:
-	teapot(double size, float angle);
-	~teapot();
-	void create();
-	
-};
 
 class Polygon : public entity
 {
 public:
-	Polygon(std::ifstream* vertexFile);
+	Polygon();
 	~Polygon();
 
 	void create();
+	void init(std::ifstream* vertexFile);
 	float getVertex(int index);
 	float setVertex(int index, int value);
 	
+	
+
 private:
 
 	std::ifstream* vertexFile;
