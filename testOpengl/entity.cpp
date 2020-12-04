@@ -56,20 +56,19 @@ void Polygon::writeVertices(std::ofstream* _vertexFileWrite)
 	vertexFileWrite->open("v.txt");
 	if(vertexFileWrite->is_open())
 	{
-		
-		float angleOfVertex = 2 * M_PI / 5.0;
-
-		float x1 = 0.0;
-		float y1 = 0.5;
-
-
-		*vertexFileWrite << x1 << " " << y1 << std::endl;
+		float degrees = 360/5;
+		float angleOfVertex = degrees * M_PI/180;
+		float scale = 0.5;
 		
 
-		for (int i = 1; i < 5; i++) 
+
+		
+		
+
+		for (int i = 0; i < 5; i++) 
 		{
-			x = x1 * cos(angleOfVertex * i) - y1 * sin(angleOfVertex * i);
-			y = y1 * cos(angleOfVertex * i) + x1 * sin(angleOfVertex * i);
+			x = scale *sin(angleOfVertex * i);
+			y = scale *cos(angleOfVertex * i);
 
 			*vertexFileWrite << x << " " << y << std::endl;
 		}

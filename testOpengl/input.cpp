@@ -1,12 +1,11 @@
 #include "input.h"
 
 
-void input::move(int x, int y, int button)
+void input::move(int& x, int& y, int button)
 {
 
 	
-	//translation
-		
+	
 		if(button == GLUT_LEFT_BUTTON)
 		{
 			translateObject(x,y);
@@ -15,6 +14,7 @@ void input::move(int x, int y, int button)
 		if(button == GLUT_RIGHT_BUTTON)
 		{
 			rotateObject(x,y);
+			
 		}
 		if(button == GLUT_MIDDLE_BUTTON)
 		{
@@ -37,7 +37,7 @@ float input::coordX(float x)
 
 float input::coordY(float y)
 {
-	float vertexY = (y/(601/4)*-1) - 2;
+	float vertexY = (y/(601/4) -2) *-1;
 
 	return vertexY;
 }
@@ -58,7 +58,9 @@ void input::translateObject(int x, int y)
 
 void input::rotateObject(int x, int y)
 {
-	polygon->angle -= (coordY(lastMouseY) - coordY(y));
+	polygon->angle += (coordY(lastMouseY) - coordY(y));
+
+	
 }
 
 void input::scaleObject(int x, int y)

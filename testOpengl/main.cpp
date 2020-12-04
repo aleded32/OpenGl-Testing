@@ -102,7 +102,7 @@ void inputMouse(int x, int y)
 	
 	
 	Input->move(x, y, _button);
-	//std::cout << polygon->getVertex(0) << std::endl;
+	
 	
 	
 }

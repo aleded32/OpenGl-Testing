@@ -15,9 +15,10 @@ public:
 
 	input(init* _Init, Polygon* _polygon);
 	~input();
-	void move(int x, int y, int button);
+	void move(int& x, int& y, int button);
 	
 	int lastMouseX, lastMouseY;
+	int newX, newY;
 	float coordX(float x);
 	float coordY(float y);
 	void translateObject(int x, int y);

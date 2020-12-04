@@ -38,6 +38,7 @@ public:
 	void writeVertices(std::ofstream* vertexFileWrite);
 	float getVertex(int index);
 	float setVertex(int index, int value);
+	float vertex[10];
 	
 	
 
@@ -46,6 +47,6 @@ private:
 	std::ifstream* vertexFileRead;
 	std::ofstream* vertexFileWrite;
 
-	float vertex[10];
+	
 
 };
