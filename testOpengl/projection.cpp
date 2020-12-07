@@ -8,6 +8,9 @@ void projection::windowProjection(int w, int h)
 	float ratio = 1 * w/h;
 
 	glViewport(0,0,(GLsizei)w, (GLsizei)h);
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
 	
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();

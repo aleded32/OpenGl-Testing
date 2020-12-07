@@ -10,6 +10,7 @@ void input::move(int& x, int& y, int button)
 		{
 			translateObject(x,y);
 			
+			
 		}
 		if(button == GLUT_RIGHT_BUTTON)
 		{
@@ -20,7 +21,7 @@ void input::move(int& x, int& y, int button)
 		{
 			scaleObject(x,y);
 		}
-
+		
 	
 	
 }

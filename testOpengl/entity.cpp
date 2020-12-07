@@ -103,12 +103,14 @@ void Polygon::create()
 			glColor3f(0.1,0.7,0.2);
 				glVertex2f(vertex[6], vertex[7]);
 			glColor3f(0.1,0.3,0.5);
-				glVertex2f(vertex[8], vertex[9]);	
+				glVertex2f(vertex[8], vertex[9]);
 		glEnd();
 	glEndList();
 
 	glCallList(listName);
 	glDeleteLists(listName, 1);
+
+	
 }
 
 float Polygon::getVertex(int index)

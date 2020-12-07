@@ -68,7 +68,7 @@ void display()
 	glRotatef(polygon->angle, 0,0,1);
 	glScalef(polygon->scale,polygon->scale, 0);
 	polygon->create();
-
+	
 	glPopMatrix();
 	glutSwapBuffers();
 	
