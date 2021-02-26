@@ -16,6 +16,7 @@ void inputMouse(int x, int y);
 void inputKey(int button,int state, int x, int y);
 init* intialise;
 Polygon* polygon = new Polygon;
+Star* star = new Star;
 input* Input = new input(intialise, polygon);
 
 
@@ -28,9 +29,11 @@ int main(int argc, char **argv)
 {
 	
 	
-
-	intialise = new init(argc,argv,601,601);
 	
+	intialise = new init(argc,argv,601,601);
+
+	GLuint Texture = NULL;
+	Texture = polygon->loadTexture("texture.bmp");
 
 	glutDisplayFunc(display);
 	
@@ -47,6 +50,7 @@ int main(int argc, char **argv)
 	delete polygon;
 	delete intialise;
 	delete Input;
+	delete star;
 	return 0;
 	
 };
@@ -55,11 +59,17 @@ void display()
 {
 	
 	
+	
+	
 	std::ifstream vertexTextRead;
     std::ofstream vertexTextWrite;
 	polygon->writeVertices(&vertexTextWrite);
 	polygon->init(&vertexTextRead);
 	
+
+	star->writeVertices(&vertexTextWrite);
+	star->init(&vertexTextRead);
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
@@ -68,6 +78,7 @@ void display()
 	glRotatef(polygon->angle, 0,0,1);
 	glScalef(polygon->scale,polygon->scale, 0);
 	polygon->create();
+	star->create();
 	
 	glPopMatrix();
 	glutSwapBuffers();
