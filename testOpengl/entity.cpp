@@ -31,6 +31,8 @@ void Polygon::init(std::ifstream* vertexFileRead)
 		{
 			*vertexFileRead >> vertex[i];
 		}
+
+
 		
 	}
 	else
@@ -39,7 +41,51 @@ void Polygon::init(std::ifstream* vertexFileRead)
 	}
 	
 	vertexFileRead->close();
+
 	
+
+}
+
+void Polygon::initAnimation(points* p, float* starVertex)
+{
+	float degrees = 360 / 5;
+	float angleOfVertex = degrees * M_PI / 180;
+		
+	
+	
+			starVertex[0] = vertex[0];
+			starVertex[1] = vertex[1];
+
+			
+			starVertex[2] = (vertex[0] + vertex[2]) / 2;
+			starVertex[3] = (vertex[1] + vertex[3]) / 2;
+
+			starVertex[4] = vertex[2];
+			starVertex[5] = vertex[3];
+			
+			
+			starVertex[6] = (vertex[2] + vertex[4]) / 2;
+			starVertex[7] = (vertex[3] + vertex[5]) / 2;
+
+			starVertex[8] = vertex[4];
+			starVertex[9] = vertex[5];
+
+			starVertex[10] = (vertex[4] + vertex[6]) / 2;
+			starVertex[11] = (vertex[5] + vertex[7]) / 2;
+
+			starVertex[12] = vertex[6];
+			starVertex[13] = vertex[7];
+
+			starVertex[14] = (vertex[6] + vertex[8]) / 2;
+			starVertex[15] = (vertex[7] + vertex[9]) / 2;
+
+			starVertex[16] = vertex[8];
+			starVertex[17] = vertex[9];
+
+			starVertex[18] = (vertex[8] + vertex[0]) / 2;
+			starVertex[19] = (vertex[9] + vertex[1]) / 2;
+			
+			
 }
 
 Polygon::~Polygon()

@@ -7,6 +7,26 @@
 #include <fstream>
 #include <glut.h>
 
+class points 
+{
+public:
+
+	float x, y, z;
+
+	points(float _x, float _y, float _z)
+	{
+		x = _x;
+		y = _y;
+		z = _z;
+	}
+	points() {}
+
+	
+};
+
+
+
+
 class entity
 {
 public:
@@ -25,6 +45,7 @@ public:
 	void create();
 	void move();
 	void loadTexture(GLuint texture, const char* filePath);
+	void morphAnimation();
 
 	unsigned char header[54];
 	unsigned int dataPos;
@@ -53,14 +74,18 @@ public:
 	~Polygon();
 
 	//void create();
+	points p[5];
 	void init(std::ifstream* vertexFileRead);
 	void writeVertices(std::ofstream* vertexFileWrite);
 	float getVertex(int index);
 	float setVertex(int index, int value);
 	void create();
 	GLuint loadTexture(const char* file);
+	void initAnimation(points* p, float* starVertex);
+
 	float vertex[10];
 	
+	//void morphAnimation();
 
 private:
 
